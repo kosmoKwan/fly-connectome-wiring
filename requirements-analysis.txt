@@ -1,0 +1,6 @@
+numpy==2.0.2
+polars==1.36.1
+pandas==2.3.3
+pyarrow==21.0.0
+scipy==1.13.1
+numba==0.60.0
