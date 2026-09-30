@@ -56,5 +56,5 @@ File names refer to our archive. Folders: `results/` holds simulation outputs; `
 |---|---|
 | All figures | `figures/run_all.sh` (`fig1.py`–`fig6.py`, `ed1.py`–`ed7.py`; checks in `check_round2.py`, `check_round3.py`) |
 | Supplementary tables | `manuscript/make_si_tables.py` |
-| Number check (377 checks against the data) and NC length limits | `manuscript/check_numbers.py`, `manuscript/nc_limits.py` |
-| Build | `manuscript/build.sh` |
+| Number check (every reported number against the data) and NC length limits | `manuscript/check_numbers.py`, `manuscript/nc_limits.py` |
+| Build; main text and Supplementary Information split into separate PDFs | `manuscript/build.sh`, `manuscript/split_si.py` |

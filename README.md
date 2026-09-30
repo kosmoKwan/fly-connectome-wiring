@@ -15,7 +15,7 @@ Status: a versioned copy with a DOI will be deposited in Zenodo on publication, 
 | `analysis/` | Decision and summary scripts: claim levels and surgery conditions (`recalc_all.py`), round-2 analyses, round-3 analyses, reciprocal-innervation decompositions, post hoc analyses |
 | `queues/` | Shell queues used on the GPU workstation, with locks, resume and smoke checks |
 | `figures/` | Figure scripts for the submitted figures (`run_all.sh`) |
-| `manuscript/` | Manuscript build and number checks. `check_numbers.py` recomputes every reported number from the data (377 checks). The folder also holds the SI table generator and the NC length check |
+| `manuscript/` | Manuscript build and number checks. `check_numbers.py` recomputes every reported number from the data and fails the build on any mismatch. The folder also holds the SI table generator, the NC length check and `split_si.py`, which writes the main text and the Supplementary Information as separate PDFs |
 | `docs/PIPELINE.md` | Map from each result in the paper to the script that produces it and the file it writes |
 
 ## Environments

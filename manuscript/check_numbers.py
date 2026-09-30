@@ -862,6 +862,15 @@ code("Eq. 16", "RF = (S_arm - S_parent) / (S_real - S_parent)", "Eq. 16", R3S / 
 code("Methods (C)", "every edge onto a motor neuron replaced; other edges kept", "C1/C1p/C0", R3S / "build_rescue.py", r"keep = parent\.filter\(~pl\.Series\(is_mn\[parent\[\"post\"\]\.to_numpy\(\)\]\)\)")
 
 
+# ------------------------------------------------------------------------------------------ Supplementary Information header counts
+_tx = (V2 / "manuscript.tex").read_text(encoding="utf-8")
+_si = _tx[_tx.index("\\renewcommand{\\thepage}{S\\arabic{page}}"):]
+_hd = re.search(r"Supplementary Notes 1--(\d+) \$\\cdot\$ Supplementary Figures 1--(\d+) \$\\cdot\$ Supplementary Tables 1--(\d+)", _si)
+_n = [len(re.findall(r"\\subsection\*\{Supplementary Note \d+:", _si)), len(re.findall(r"\\begin\{figure\}\[p\]", _si)),
+      len(re.findall(r"\\begin\{table\}", (V2 / "generated" / "si_tables.tex").read_text(encoding="utf-8")))]
+chk("Suppl. Information header", "numbers of Supplementary Notes, Figures and Tables listed on the first SI page", "/".join(_hd.groups()),
+    [float(x) for x in _n], "manuscript.tex; generated/si_tables.tex", "counted in the document")
+
 # ------------------------------------------------------------------------------------------ numeric-token audit of the manuscript
 tex = (V2 / "manuscript.tex").read_text(encoding="utf-8")
 body = tex.split("\\begin{document}", 1)[1]

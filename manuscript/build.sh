@@ -2,7 +2,7 @@
 # Rebuild the Nature Communications version (v9_NC) in English and Chinese (faithful translation): legends from captions_draft.md, SI tables
 # from the analysis tables, number check (English vs data), NC length check, number check (Chinese vs English), PDFs.
 # The two PDFs go to <experiment root>/paper_最新版/, so that the current paper is one level below the root.
-# Run after `bash ../figures_v3/Claude_总览图版_20260928/src/run_all.sh` whenever the figures or their data change.
+# Run after `bash ../figures_v3/Claude_v8第三轮_20260930/src/run_all.sh` whenever the figures or their data change.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 PY=${PY:-$HOME/figvenv/bin/python}
@@ -17,4 +17,6 @@ tectonic -X compile manuscript_zh.tex --keep-logs
 mkdir -p "$OUT"
 mv -f manuscript.pdf "$OUT/英文版_果蝇连接组论文_NC投稿v9.pdf"
 mv -f manuscript_zh.pdf "$OUT/中文版_果蝇连接组论文_NC投稿v9.pdf"
+# NC wants the main text and the Supplementary Information as separate files; the combined PDF is kept
+$PY src/split_si.py "$OUT/英文版_果蝇连接组论文_NC投稿v9.pdf" "$OUT/英文版_正文_NC投稿v9.pdf" "$OUT/英文版_补充材料_NC投稿v9.pdf"
 echo "PDFs -> $(cd "$OUT" && pwd)"
